@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denoument List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 Denoument List</h1>
+            <p>Track and verify your achievements</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="switchTab('rankings')">Rankings</button>
+            <button class="tab-btn" onclick="switchTab('achievements')">Achievements</button>
+            <button class="tab-btn" onclick="switchTab('submit')">Submit</button>
+        </nav>
+
+        <!-- Rankings Tab -->
+        <div id="rankings" class="tab-content active">
+            <div class="filters">
+                <input type="text" id="searchUser" placeholder="Search user..." onkeyup="filterRankings()">
+                <select id="categoryFilter" onchange="loadRankings()">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+            <div id="rankingsList" class="rankings-list"></div>
+        </div>
+
+        <!-- Achievements Tab -->
+        <div id="achievements" class="tab-content">
+            <div class="filters">
+                <select id="categorySelect" onchange="loadAchievements()">
+                    <option value="">All Categories</option>
+                </select>
+                <label>
+                    <input type="checkbox" id="verifiedOnly" onchange="loadAchievements()">
+                    Verified Only
+                </label>
+            </div>
+            <div id="achievementsList" class="achievements-list"></div>
+        </div>
+
+        <!-- Submit Achievement Tab -->
+        <div id="submit" class="tab-content">
+            <form id="submitForm" onsubmit="submitAchievement(event)">
+                <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" id="submitUsername" placeholder="Your username" required>
+                </div>
+                <div class="form-group">
+                    <label>Achievement Title:</label>
+                    <input type="text" id="submitTitle" placeholder="Title" required>
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <textarea id="submitDescription" placeholder="Describe your achievement" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Category:</label>
+                    <input type="text" id="submitCategory" placeholder="e.g., Gaming, Development, Art" required>
+                </div>
+                <div class="form-group">
+                    <label>Difficulty:</label>
+                    <select id="submitDifficulty">
+                        <option>easy</option>
+                        <option selected>medium</option>
+                        <option>hard</option>
+                        <option>extreme</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Points:</label>
+                    <input type="number" id="submitPoints" value="100" min="10" required>
+                </div>
+                <button type="submit" class="btn-primary">Submit Achievement</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
